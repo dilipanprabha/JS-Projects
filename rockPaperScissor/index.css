@@ -1,0 +1,27 @@
+body {
+    height: 100vh;
+    background-image: linear-gradient(to right top, #868c37, #77a86a, #72c1a1, #84d6d2, #ade8f7);
+    background-image: -webkit-linear-gradient(to right top, #868c37, #77a86a, #72c1a1, #84d6d2, #ade8f7);
+}
+
+.rps {
+    border-radius: 50%;
+    padding: 1rem;
+    background-color: transparent;
+    border: 3px solid white;
+    padding: 2rem;
+}
+
+.rps > i {
+    font-size: 3rem;
+    color: #fffb00;
+}
+
+.rot {
+    rotate: 85deg;
+}
+
+.para2 {
+    font-size: xxx-large;
+    color: #fffb00;
+}
