@@ -8,9 +8,13 @@ const container1 = document.getElementById('container1');
 let wins = 0, lose = 0, ties = 0;
 let winOrLose = '';
 
-para1.innerHTML = `Wins: ${wins}, Losses: ${lose}, Ties: ${ties}`;
-para1.className = "mt-3";
-container1.insertBefore(para1, button);
+showWinOrLose();
+
+function showWinOrLose() {
+    para1.innerHTML = `Wins: ${wins}, Losses: ${lose}, Ties: ${ties}`;
+    para1.className = "mt-3";
+    container1.insertBefore(para1, button);
+}
 
 function showResult(result, human = 0, comp) {
     head3.innerHTML = `You ${result}.`;
@@ -20,9 +24,7 @@ function showResult(result, human = 0, comp) {
         ties++;
         head3.innerHTML = `${result}.`;
     }
-    para1.innerHTML = `Wins: ${wins}, Losses: ${lose}, Ties: ${ties}`;
-    para1.className = "mt-3";
-    container1.insertBefore(para1, button);
+    showWinOrLose();
     para2.innerHTML = `You select ${icons[human]} and Computer select ${icons[comp]}`;
     container1.insertBefore(para2, para1)
     head3.className = "text-center";
@@ -56,7 +58,5 @@ function resetScore() {
     lose = 0;
     ties = 0;
     head3.remove();
-    para1.innerHTML = `Wins: ${wins}, Losses: ${lose}, Ties: ${ties}`;
-    para1.className = "mt-3";
-    container1.insertBefore(para1, button);
+    showWinOrLose();
 }
