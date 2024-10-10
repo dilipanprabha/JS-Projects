@@ -1,20 +1,25 @@
 const arr = ['rock', 'paper', 'scissor'];
-const icons = ['<i class="fa-solid fa-hand-back-fist para2"></i>', '<i class="fa-solid fa-hand para2"></i>', '<i class="fa-solid fa-hand-scissors rot para2"></i>'];
+const icons = ['<i class="fa-solid fa-hand-back-fist i1 para2"></i>', '<i class="fa-solid fa-hand i2 para2"></i>', '<i class="fa-solid fa-hand-scissors rot i3 para2"></i>'];
+
+//HTML Elements are created
 const para1 = document.createElement("p");
 const para2 = document.createElement('p');
 const head3 = document.createElement("h3");
+
+// Fetch HTML Elements
 const button = document.getElementById("reset");
 const container1 = document.getElementById('container1');
 let winOrLose = '';
 
-let scores = JSON.parse(localStorage.getItem("scores"));
-if (scores === null) {
-    scores = {
-        wins: 0,
-        loses: 0,
-        ties: 0
-    };
-}
+// Fetch scores from localStorage
+let scores = JSON.parse(localStorage.getItem("scores")) || { wins: 0, loses: 0, ties: 0 };
+// if (!scores) {
+//     scores = {
+//         wins: 0,
+//         loses: 0,
+//         ties: 0
+//     };
+// }
 
 showWinOrLose();
 
@@ -24,7 +29,7 @@ function showWinOrLose() {
     container1.insertBefore(para1, button);
 }
 
-function showResult(result, human = 0, comp) {
+function showResult(result, human, comp) {
     head3.innerHTML = `You ${result}.`;
     if (result == 'Win') scores.wins++;
     else if (result == 'Lose') scores.loses++;
@@ -34,7 +39,7 @@ function showResult(result, human = 0, comp) {
     }
     localStorage.setItem("scores", JSON.stringify(scores));
     showWinOrLose();
-    para2.innerHTML = `You select ${icons[human]} and Computer select ${icons[comp]}`;
+    para2.innerHTML = `You picked ${icons[human]} and Computer picked ${icons[comp]}`;
     container1.insertBefore(para2, para1)
     head3.className = "text-center";
     container1.insertBefore(head3, para2);
