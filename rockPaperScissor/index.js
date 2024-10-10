@@ -5,25 +5,34 @@ const para2 = document.createElement('p');
 const head3 = document.createElement("h3");
 const button = document.getElementById("reset");
 const container1 = document.getElementById('container1');
-let wins = 0, lose = 0, ties = 0;
 let winOrLose = '';
+
+let scores = JSON.parse(localStorage.getItem("scores"));
+if (scores === null) {
+    scores = {
+        wins: 0,
+        loses: 0,
+        ties: 0
+    };
+}
 
 showWinOrLose();
 
 function showWinOrLose() {
-    para1.innerHTML = `Wins: ${wins}, Losses: ${lose}, Ties: ${ties}`;
+    para1.innerHTML = `Wins: ${scores.wins}, Losses: ${scores.loses}, Ties: ${scores.ties}`;
     para1.className = "mt-3";
     container1.insertBefore(para1, button);
 }
 
 function showResult(result, human = 0, comp) {
     head3.innerHTML = `You ${result}.`;
-    if (result == 'Win') wins++;
-    else if (result == 'Lose') lose++;
+    if (result == 'Win') scores.wins++;
+    else if (result == 'Lose') scores.loses++;
     else {
-        ties++;
+        scores.ties++;
         head3.innerHTML = `${result}.`;
     }
+    localStorage.setItem("scores", JSON.stringify(scores));
     showWinOrLose();
     para2.innerHTML = `You select ${icons[human]} and Computer select ${icons[comp]}`;
     container1.insertBefore(para2, para1)
@@ -54,9 +63,11 @@ function random() {
 }
 
 function resetScore() {
-    wins = 0;
-    lose = 0;
-    ties = 0;
+    scores.wins = 0;    
+    scores.loses = 0;
+    scores.ties = 0;
+    localStorage.removeItem("scores");
     head3.remove();
+    para2.remove();
     showWinOrLose();
 }
