@@ -10,17 +10,17 @@
 </head>
 <body>
     <div class="parent position-relative">
+        <div class="container-fluid text-center fixed-top p-3 fw-bold fs-1 text-success">
+            TodoList
+        </div>
         <div class="position-absolute top-50 start-50 translate-middle container text-center">
-            <div class="container-fluid p-3 fw-bold fs-1 mb-3 text-success">
-                TodoList
-            </div>
-            <form>
-                <div class="row justify-content-center">
-                    <div class="row g-2">
+            <!-- <form id="myForm"> -->
+                <div class="container text-center" id="row">
+                    <div class="row g-2 justify-content-center">
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="text" class="form-control" id="todoName" placeholder="Todo name">
-                                <label for="floatingInputGrid">Todo Name</label>
+                                <label for="todoName">Todo Name</label>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -29,17 +29,15 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="form-floating">
-                                <button type="submit" id="button" class="btn btn-success mb-3">Add</button>
-                            </div>
+                            <button type="submit" class="btn btn-success mb-3" onclick="addData(event)">Add</button>
                         </div>
                     </div>
                 </div>
-            </form>
+            <!-- </form> -->
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
+    <script src="index.js"></script>
 </body>
 </html>

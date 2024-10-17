@@ -11,7 +11,7 @@
     height: calc(3.5rem + calc(var(--bs-border-width)* 2));
 }
 
-#button {
+button {
     height: calc(3.5rem + calc(var(--bs-border-width)* 2));
     width: 100%;
 }
