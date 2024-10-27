@@ -16,7 +16,7 @@ button:hover {
     background-image: linear-gradient(to right top, #2575fc, #6a11cb);
 }
 
-#reset {
+#reset, #autoplay {
     color: #FFF;
 }
 
@@ -30,7 +30,6 @@ button:hover {
 
 .rps > i {
     font-size: 3rem;
-    /* color: #fffb00; */
 }
 
 .x1, .i1 {
@@ -48,7 +47,6 @@ button:hover {
 .rot {
     rotate: 85deg;
 }
-
 
 .para2 {
     font-size: xxx-large;

@@ -1,5 +1,39 @@
+let temp = 0, intervalID;;
 const arr = ['rock', 'paper', 'scissor'];
 const icons = ['<i class="fa-solid fa-hand-back-fist i1 para2"></i>', '<i class="fa-solid fa-hand i2 para2"></i>', '<i class="fa-solid fa-hand-scissors rot i3 para2"></i>'];
+const reset = document.querySelector("#reset");
+const autoplay = document.querySelector("#autoplay");
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissor = document.querySelector("#scissor");
+
+reset.addEventListener('click', () => {
+    resetValues();
+})
+
+autoplay.addEventListener('click', () => {
+    autoPlay();
+})
+
+rock.addEventListener('click', () => {
+    check('rock')
+})
+
+paper.addEventListener('click', () => {
+    check('paper')
+})
+
+scissor.addEventListener('click', () => {
+    check('scissor')
+})
+
+document.body.addEventListener('keydown', (event) => {
+    if (event.key === 'a') autoPlay();
+    else if (event.key === 'r') check('rock');
+    else if (event.key === 'p') check('paper');
+    else if (event.key === 's') check('scissor'); 
+    else if (event.key === 'Backspace') resetValues();
+})
 
 //HTML Elements are created
 const para1 = document.createElement("p");
@@ -13,13 +47,6 @@ let winOrLose = '';
 
 // Fetch scores from localStorage
 let scores = JSON.parse(localStorage.getItem("scores")) || { wins: 0, loses: 0, ties: 0 };
-// if (!scores) {
-//     scores = {
-//         wins: 0,
-//         loses: 0,
-//         ties: 0
-//     };
-// }
 
 showWinOrLose();
 
@@ -67,12 +94,33 @@ function random() {
     return Math.floor(rand)
 }
 
-function resetScore() {
-    scores.wins = 0;    
-    scores.loses = 0;
-    scores.ties = 0;
-    localStorage.removeItem("scores");
-    head3.remove();
-    para2.remove();
-    showWinOrLose();
+function resetValues() {
+    const sure = confirm("Are you sure you want to reset the score?");
+    if (sure) {
+        scores.wins = 0;    
+        scores.loses = 0;
+        scores.ties = 0;
+        localStorage.removeItem("scores");
+        head3.remove();
+        para2.remove();
+        showWinOrLose();
+    }
+}
+
+function autoPlay() {
+    if (autoplay.textContent === "Auto Play") {
+        autoplay.textContent = "Stop Playing";
+    } else {
+        autoplay.textContent = "Auto Play"
+    }
+    if (temp === 0) {
+        intervalID = setInterval(() => {
+            const comp = arr[random()];
+            check(comp);
+        }, 1000);
+        temp = 1;
+    } else {
+        clearInterval(intervalID);
+        temp = 0;
+    }
 }
