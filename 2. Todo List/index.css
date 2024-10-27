@@ -1,0 +1,17 @@
+:root {
+    --bs-border-width: 1px;
+}
+
+.parent {
+    height: 100vh;
+    width: 100%;
+}
+
+#date {
+    height: calc(3.5rem + calc(var(--bs-border-width)* 2));
+}
+
+button {
+    height: calc(3.5rem + calc(var(--bs-border-width)* 2));
+    width: 100%;
+}
