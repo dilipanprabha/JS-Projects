@@ -2,10 +2,13 @@ const row = document.getElementById("row");
 const textElement = document.getElementById("todoName");
 const dateElement = document.getElementById("date");
 
-const todo = {
-    length: 0,
-    data: []
-};
+const todo = JSON.parse(localStorage.getItem("todo")) || {length: 0, data: []};
+
+if (todo.length) {
+    for (const element of todo.data) {
+        createEle(element.todoName, element.date);
+    }
+}
 
 function addData(event) {
     const todoName = textElement.value;
@@ -25,7 +28,8 @@ function addData(event) {
         date
     };
     todo.data.push(data);
-    display(data);
+    createEle(data.todoName, data.date);
+    localStorage.setItem("todo", JSON.stringify(todo));
     textElement.focus();
 }
 
@@ -58,14 +62,17 @@ function createEle(todoName, date) {
     div1.append(div2);
     div1.append(div3);
     div1.append(div4);
-    return div1;
+    row.append(div1);
 }
 
-function display(obj) {
-    const div = createEle(obj.todoName, obj.date);
-    row.append(div);
-}
-
-function deleteEle(event) {
-    document.getElementById(event.target.classList[2]).remove();
+function deleteEle(event) { 
+    const row = document.getElementById(event.target.classList[2]);
+    const index = row.id.at(-1);
+    todo.data.splice(index - 1, 1);
+    --todo.length;
+    row.remove();
+    localStorage.setItem("todo", JSON.stringify(todo));
+    if (todo.length === 0) {
+        localStorage.removeItem("todo");
+    }
 }
