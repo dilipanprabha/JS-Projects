@@ -1,0 +1,12 @@
+body {
+    background-image: url('./images/projecr-1.jpg'); 
+    height: 100vh;
+}
+
+q {
+    quotes: """ """;
+}
+
+#author {
+    letter-spacing: 4px;
+}
