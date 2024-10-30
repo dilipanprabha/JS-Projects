@@ -1,9 +1,8 @@
-body {
-    background-image: url('./images/projecr-1.jpg'); 
-    height: 100vh;
+* {
+    font-family: "Oswald", sans-serif;
 }
 
-q {
+#quote {
     quotes: """ """;
 }
 
