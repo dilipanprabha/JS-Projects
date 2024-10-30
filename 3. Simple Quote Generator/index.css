@@ -1,0 +1,11 @@
+* {
+    font-family: "Oswald", sans-serif;
+}
+
+#quote {
+    quotes: """ """;
+}
+
+#author {
+    letter-spacing: 4px;
+}
